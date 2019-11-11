@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>模板中心</title>
+		<!-- Set render engine for 360 browser -->
+		<meta name="renderer" content="webkit">
+
+		<!-- No Baidu Siteapp-->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<!-- <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png"> -->
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+		<!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<!-- <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png"> -->
+		<meta name="msapplication-TileColor" content="#0e90d2">
+
+		<link rel="stylesheet" href="css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+	<body>
+		<div class="header">
+			<div class="wrapper">
+				<div class="logo" data-am-scrollspy="{animation: 'slide-top'}">
+					<div class="logo-img"><img src="images/logo.png"></div>
+					<div class="am-header-right am-header-nav am-show-sm-down">
+						<a href="#right-link" class="" data-am-offcanvas="{target: '#r-nav'}">
+							<i class="am-header-icon am-icon-bars"></i> 菜单
+						</a>
+					</div>
+				</div>
+				<!-- 导航 -->
+				<div class="nav am-hide-sm-down" data-am-scrollspy="{animation: 'slide-top'}">
+					<ul class="am-cf">
+						<li>
+							<p>行业</p>
+						</li>
+						<li>
+							<p>颜色</p>
+						</li>
+					</ul>
+				</div>
+				<div class="login"><a href="login.html">登录</a></div>
+			</div>
+			<!-- 下拉菜单 -->
+			<div class="slide-nav">
+				<ul id="industry"></ul>
+				<ul id="color"></ul>
+			</div>
+		</div>
+		<!-- 侧边栏内容 -->
+		<div id="r-nav" class="am-offcanvas">
+			<div class="am-offcanvas-bar am-offcanvas-bar-flip">
+				<nav class="am-offcanvas-content">
+					<div class="am-panel-group" id="accordion">
+						<div class="am-panel am-panel-default">
+							<div class="am-panel-hd">
+					      		<h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">行业</h4>
+					    	</div>
+					    	<div id="do-not-say-1" class="am-panel-collapse am-collapse"></div>
+					  	</div>
+					  	<div class="am-panel am-panel-default">
+					    	<div class="am-panel-hd">
+					      		<h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">颜色</h4>
+					    	</div>
+					    	<div id="do-not-say-2" class="am-panel-collapse am-collapse"></div>
+					  	</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="banner">
+			<img src="images/banner.jpg" width="100%">
+		</div>
+		<div class="content">
+			<ul class="product sm-block-grid-2  md-block-grid-3 lg-block-grid-4">
+
+			</ul>
+		</div>
+		<div class="footer">
+			<p> (©) 2019 山东易搜集团 官方网站 <a href="https://www.0537ys.com">https://www.0537ys.com</a></p>
+			<p>网站图片来源于网络,如有侵权请联系删除</p>
+		</div>
+		<div data-am-smooth-scroll class="slidetop am-btn am-btn-success">
+
+		</div>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.nav li').hover(function() {
+					var index = $(this).index();
+					$(this).parents('.wrapper').siblings('.slide-nav').find('ul').eq(index).stop().slideDown(300).siblings().stop().slideUp(300);
+					$('.slide-nav ul').mouseleave(function() {
+						$(this).stop(100).slideUp(300);
+					})
+					$('.slide-nav ul').mouseover(function() {
+						$(this).stop(100).slideDown(300);
+					})
+					$('.nav').mouseleave(function(){
+						$('.slide-nav ul').stop(100).slideUp(300)
+					})
+				}, function() {
+					
+				})
+				$(document).scroll(function() {
+					var top = $(document).scrollTop();
+					if (top > 30) {
+						$('.header').css({
+							"padding-top": "10px",
+							"box-shadow": "0 6px 6px rgba(0, 0, 0, .1)"
+						})
+					} else {
+						$('.header').css({
+							"padding-top": "20px",
+							"box-shadow": "none"
+						})
+					}
+					if (top > 100) {
+						$('.slidetop').show(100);
+					} else {
+						$('.slidetop').hide(100);
+					}
+				})
+			})
+		</script>
+		<script type="text/javascript">
+			
+		</script>
+		<script src="js/index.js"></script>
+		<!--在这里编写你的代码-->
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+		<script src="js/amazeui.min.js"></script>
+	</body>
+</html>

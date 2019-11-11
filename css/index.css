@@ -1,0 +1,420 @@
+@charset "utf-8";
+
+ul,
+li,
+p,
+span {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	background: rgba(255, 255, 255);
+	color: #fff;
+	font-size: 1.2rem;
+	height: 90px;
+	transition: all .7s cubic-bezier(.215, .61, .355, 1) 0s;
+	box-sizing: border-box;
+}
+
+.header .wrapper {
+	width: 1300px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+}
+
+@media screen and (max-width : 1200px) {
+	.header .wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.header a {
+	color: #000;
+}
+
+.head {
+	padding: 0 4rem;
+}
+
+.logo {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo .logo-img {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.am-header-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	margin-left: 2rem;
+	font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+	.logo img {
+		width: 100%;
+	}
+}
+
+.nav ul {
+	display: flex;
+	justify-content: space-between;
+	/* max-width: 1200px; */
+	margin: 0 auto;
+	padding-top: 2rem;
+	height: 100%;
+}
+
+.nav ul li {
+	text-align: center;
+	color: #303030;
+	line-height: 40px;
+}
+.slide-nav{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 99999999;
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+	color: #fff;
+}
+.slide-nav ul{
+	display: none;
+	padding: 50px 20%;
+	text-align: right;
+	justify-content: space-around;
+	overflow: hidden;
+}
+.slide-nav ul>li{
+	float: right;
+	margin: 0 10px;
+	/* line-height: 50px; */
+	font-size: 16px;
+	padding: 1rem;
+	border-radius: 50%;
+	cursor:pointer;
+}
+#color>li{
+	width: 13px;
+	height: 13px;
+	border: 2px solid #fff;
+	box-shadow: rgba(255, 255, 255, 0.7) 0px 2px 6px;
+	margin-left: 20px;
+}
+#color>li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.slide-nav #color>li:nth-child(1){
+	background-color: red;
+}
+.slide-nav #color>li:nth-child(2){
+	background-color:yellow;
+}
+.slide-nav #color>li:nth-child(3){
+	background-color: green ;
+}
+.slide-nav #color>li:nth-child(4){
+	background-color: blue;
+}
+.slide-nav #color>li:nth-child(5){
+	background-color:purple;
+}
+.slide-nav #color>li:nth-child(6){
+	background-color:gray;
+}
+.slide-nav #color>li:nth-child(7){
+	background-color:black;
+}
+.slide-nav #color>li a{
+	display: none;
+	color: #fff;
+}
+
+/*-----------行业--------------*/
+#industry a{
+	color: #fff;
+}
+#industry a:hover{
+	color: #46be8a;
+}
+
+
+
+.nav ul li p:hover{
+	transition: all 0.5s;
+	background-color: #46be8a;
+	color: #fff;
+}
+.nav ul li a p:nth-child(2) {
+	color: #666;
+}
+
+.login {
+	width: 180px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	margin: 20px 0 0 20px;
+	background-color: #46be8a;
+	font-size: 16px;
+}
+
+.login a {
+	color: #fff;
+}
+
+/*侧边栏部分*/
+.am-offcanvas-bar {
+	width: 20rem;
+}
+
+.am-offcanvas-content {
+	font-size: 1.6rem;
+	text-align: center;
+	height: 100%;
+	line-height: 4rem;
+}
+
+.posi {
+	position: relative;
+}
+
+.posi .dome {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+/* .banner {
+	margin-top: 80px;
+	width: 100%;
+	height: 300px;
+	background: url(../images/banner.jpg) no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+} */
+.banner{
+	margin: 40px 0;
+}
+/*-------侧边栏--------*/
+.am-panel-hd{
+	padding: 0;
+}
+.am-panel-bd{
+	padding: 0;
+	font-size: 12px;
+}
+.am-offcanvas-bar{
+	width: 27rem;
+}
+@media screen and (min-width: 1200px) {
+	.product {
+		width: 80%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.product li {
+		width: 30%;
+		/* height: 400px; */
+		/* padding: 60px 70px 70px 75px; */
+		/* background: url(../images/bg.png) no-repeat center; */
+		background-size:100%;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.product {
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.product li {
+		width: 48%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.product {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.product li {
+		width: 100%;
+	}
+}
+
+.product li img {
+	/* display: none; */
+	width: 100%;
+	transition: all 0.5s;
+}
+
+.product .item-img {
+	width: 100%;
+	margin-bottom: 90px;
+	position: relative;
+	overflow: hidden;
+	transition: all 0.5s;
+	border: 10px solid #d1d1d1;
+	border-radius: 5px;
+}
+
+.product li:hover .item-img {
+	transform: scale(1.1);
+}
+.product li:hover .btn {
+	opacity: 1;
+}
+
+.product li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.product .item-wrapper {
+	text-align: center;
+}
+
+.product .item-wrapper p {
+	line-height: 40px;
+}
+
+.product .item-wrapper p:first-child {
+	font-size: 18px;
+}
+
+.product .item-wrapper p:last-child {
+	font-size: 12px;
+	color: #b1b1b1;
+}
+
+.product .btn {
+	width: 70%;
+	border-radius: 3px;
+	padding: 1.2% 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -35%;
+	margin-top: 8%;
+	background: rgba(255, 255, 255, 1);
+	opacity: 0;
+	transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+	box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+	text-align: center;
+}
+
+.footer {
+	background-color: #333333;
+	padding: 6rem 0 0 0;
+	margin-top: 100px;
+}
+
+.footer>p {
+	height: 5rem;
+	text-align: center;
+	color: #696969;
+}
+
+.content {
+	padding-top: 50px;
+}
+.content .am-container{
+	max-width: 1500px;
+}
+.slidetop {
+	display: none;
+	position: fixed;
+	right: 0;
+	bottom: 100px;
+	z-index: 99999;
+	width: 50px;
+	height: 50px;
+	background: url(../images/slidetop.png) no-repeat center;
+	background-size: 50% 50%;
+	transition: all 0.5s;
+	border: none;
+}
+.slidetop:hover{
+	background-color: #dddddd;
+}
+@media screen and (max-width:600px) {
+	.slidetop {
+		display: none;
+		width: 50px;
+		height: 50px;
+	}
+}
+.cssanimations [data-am-scrollspy*=animation]{
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*轮播图下面的部分*/
+/* .wrapper{
+	padding-bottom: 2rem;
+} */
+.wrapper ul li {
+	text-align: center;
+	float: left;
+	width: 11.6rem;
+	height: 100%;
+}
+
+.wrapper ul li img {
+	margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+	.wrapper ul li {
+		text-align: center;
+		float: left;
+		width: 8.6rem;
+		margin-bottom: 0.5rem;
+	}
+}

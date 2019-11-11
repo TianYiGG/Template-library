@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<link type="text/css" href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+	</head>
+	<body cz-shortcut-listen="true">
+		<div class="particle-network-animation">
+			<div class="login">
+				<div class="login_title">
+					<span>管理员登录</span>
+				</div>
+				<div class="login_fields">
+					<div class="login_fields__user">
+						<div class="icon">
+							<img alt="" src="images/user_icon_copy.png">
+						</div>
+						<input class="name" name="login" placeholder="用户名" maxlength="16" type="text" autocomplete="off" value="admin">
+						<div class="validation">
+							<!-- <img alt="" src="images/tick.png"> -->
+						</div>
+					</div>
+					<div class="login_fields__password">
+						<div class="icon">
+							<img alt="" src="images/lock_icon_copy.png">
+						</div>
+						<input class="pwd" name="pwd" placeholder="密码" maxlength="16" type="text" autocomplete="off" value="123456">
+						<div class="validation">
+							<!-- <img alt="" src="images/tick.png"> -->
+						</div>
+					</div>
+					<div class="login_fields__password">
+						<div class="icon">
+							<img alt="" src="images/key.png">
+						</div>
+						<input class="code" name="code" placeholder="验证码" maxlength="4" type="text" autocomplete="off">
+						<img id='refresh' src="http://h5.0537ys.com/captcha.html">
+					</div>
+
+					<div class="login_fields__submit">
+						<input class="btn" type="button" value="登录">
+					</div>
+				</div>
+				<div class="success">
+				</div>
+				<div class="disclaimer">
+					<p>欢迎登陆后台管理系统</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				//验证码刷新
+				$('#refresh').click(function(){
+					$(this).attr("src","http://h5.0537ys.com/captcha.html?"+Math.random());
+				})
+				//点击按钮发送ajax
+				$(".btn").click(function(){
+					var name = $('.name').val();
+					var pwd = $('.pwd').val();
+					var captcha = $('.code').val();
+
+					var num = Math.round(Math.random()*5000);
+					if(name == ""){
+						alert("请输入用户名");
+					}else if(pwd == ""){
+						alert("请输入密码");
+					}else if(captcha == ""){
+						alert("请输入验证码");
+					}else{
+						$.ajax({
+						type:"post",
+						url:"http://h5.0537ys.com/index/index/ajaxLogin?v="+num,    //后台接口地址
+						data:{
+							//已经申明了数据格式，就用那种数据格式
+							captcha:captcha,
+							name:name,
+							pwd:pwd,
+						},
+                        // 允许携带证书
+                        xhrFields: {
+                            withCredentials: true
+						},
+                        // 允许跨域
+						crossDomain: true,
+						async:true,
+						success:function(result){
+							var res = JSON.parse(result);
+							if(res.code == 1){
+								console.log(res.msg)
+							}else if(res.code == 0){
+								window.location.href="/index.html";
+							}
+						},
+						error:function(err){
+                            console.log('错误')
+							console.log(err)
+						}
+					});
+					}
+					
+				})
+				
+			})
+		</script>
+		<script type="text/javascript" src="js/script.js"></script>
+
+	</body>
+</html>

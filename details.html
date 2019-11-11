@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/details.css" />
+		<link rel="stylesheet" type="text/css" href="css/font.css" />
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		<section id="control">
+			<div class="controlMenu">
+				<div class="device-select">
+					<a href="javascript:;" class="desktop active" data-value="desktop">
+						<i class="mofont moicon-desktop active" aria-hidden="true"></i>
+					</a>
+					<a href="javascript:;" class="tablet" data-value="tablet">
+						<i class="mofont moicon-pad" aria-hidden="true"></i>
+					</a>
+					<a href="javascript:;" class="mobile" data-value="mobile">
+						<i class="mofont moicon-phone" aria-hidden="true"></i>
+					</a>
+				</div>
+				<div class="qrcode">
+					<i class="mofont moicon-juxing"></i>
+					<div class="qrcondeArea">
+					</div>
+				</div>
+				<!-- <div class="theme-select">
+					<span>颜色</span>
+					<nav>
+						<span class="theme-b wyellow" data-value="wyellow">
+							<i></i>
+						</span>
+						<span class="theme-b wblue" data-value="wblue">
+							<i></i>
+						</span>
+						<span class="theme-b wblack" data-value="wblack">
+							<i></i>
+						</span>
+						<span class="theme-b wred" data-value="wred">
+							<i></i>
+						</span>
+						<span class="theme-b wgreen" data-value="wgreen">
+							<i></i>
+						</span>
+					</nav>
+				</div> -->
+			</div>
+		</section>
+		<section id="contentArea" class="desktop">
+			<div class="header">
+				<i class="licon"></i>
+			</div>
+			<iframe id="contentFrame" data-src="http://app.com/1/" frameborder="no" border="0" marginwidth="0"
+			 marginheight="0" allowtransparency="yes"></iframe>
+			<div class="footer">
+				<i class="cicon"></i>
+			</div>
+			<div id="mask"></div>
+		</section>
+		<!-- <section id="contentArea" class="desktop">
+			<section id="control">
+				<div class="controlMenu">
+					<div class="device-select">
+						<a href="javascript:;" class="desktop active" data-value="desktop">
+							<i class="mofont moicon-desktop active" aria-hidden="true"></i>
+						</a>
+						<a href="javascript:;" class="tablet" data-value="tablet">
+							<i class="mofont moicon-pad" aria-hidden="true"></i>
+						</a>
+						<a href="javascript:;" class="mobile" data-value="mobile">
+							<i class="mofont moicon-phone" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div class="qrcode">
+						<i class="mofont moicon-juxing"></i>
+						<div class="qrcondeArea"><canvas width="256" height="256"></canvas></div>
+					</div>
+				</div>
+				<div class="controlMask" style="display: none;"></div>
+			</section>
+			<div class="header">
+				<i class="licon"></i>
+			</div>
+			<iframe id="contentFrame" data-src="http://app.com/dome/details.html" frameborder="no" border="0" marginwidth="0"
+			 marginheight="0" allowtransparency="yes"  src="http://app.com/1/"></iframe>
+			<div class="footer">
+				<i class="cicon"></i>
+			</div>
+			<div id="mask"></div>
+		</section> -->
+
+
+	</body>
+</html>
