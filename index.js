@@ -7,28 +7,11 @@ $(document).ready(function() {
 	//行业选择
 	$('#industry').on('click','li a',function(){
 		industry = $(this).data('id');
-		console.log(industry)
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
 	})
 	$('#color').on('click','li',function(){
-		color = $(this).data('id');
-		$('.product').html('');
-		pages = 0;
-		scrolllist();
-	})
-	//手机端行业
-	$('#do-not-say-1').on('click','div a',function(){
-		industry = $(this).data('id');
-		console.log(industry);
-		console.log('hahaha');
-		$('.product').html('');
-		pages = 0;
-		scrolllist();
-	})
-	//手机端颜色
-	$('#do-not-say-2').on('click','div a',function(){
 		color = $(this).data('id');
 		$('.product').html('');
 		pages = 0;
@@ -51,7 +34,7 @@ $(document).ready(function() {
             // console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#industry').append('<li><a href="javascript:;" data-id="' + index + '">' + item + '</a></li>');
-					$('#do-not-say-1').append('<div class="am-panel-bd phoneindustry"><a href="javascript:;" data-id="' + index + '">' + item + '</a></div>')
+					$('#do-not-say-1').append('<div class="am-panel-bd" data-id="' + index + '">' + item + '</div>')
 				});
 		},
 		error: function(err) {
@@ -76,7 +59,7 @@ $(document).ready(function() {
 			// console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#color').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
-					$('#do-not-say-2').append('<div class="am-panel-bd phonecolor"><a href="javascript:;"  data-id="' + index + '">' + item + '</a></div>')
+					$('#do-not-say-2').append('<div class="am-panel-bd" data-id="' + index + '">' + item + '</div>')
 				});
 		},
 		error: function(err) {
@@ -87,12 +70,11 @@ $(document).ready(function() {
 	$(window).scroll(function() {
 		//z总高度
 		var height = $(document).height();
-		console.log(height);
 		//页面高度
 		var h = $(this).height();
 		//滑动的高度
 		var scrolltop = $(this).scrollTop();
-		if (h + scrolltop >= height-200) {
+		if (h + scrolltop >= height) {
 			scrolllist()
 		}
 	})
@@ -100,6 +82,7 @@ $(document).ready(function() {
 		//baidu.com?&industry=industry&a=color&k=pages;
 		var s = '';
 		var url = site + "/index/index/index";
+		
 		
 		if(industry != -1){
 			//&industry=1
