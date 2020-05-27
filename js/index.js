@@ -1,17 +1,16 @@
 $(document).ready(function() {
 	var pages = 0; //页码
 	var site = 'http://h5.0537ys.com';
-	var color = -1;
-	var industry = -1;
-	//动态添加的元素要用事件监听
-	//当选择行业的时候 吧行业id提取出来 然后清空 product列表 最后吧页码初始化为0    调用请求数据函数
+	var color = -1;   //颜色
+	var industry = -1;  //行业
+	//要用事件监听
+	//行业选择
 	$('#industry').on('click','li a',function(){
 		industry = $(this).data('id');
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
 	})
-	//同上
 	$('#color').on('click','li',function(){
 		color = $(this).data('id');
 		$('.product').html('');
@@ -22,7 +21,7 @@ $(document).ready(function() {
 	$.ajax({
 		type: "post",
 		url: site + "/index/index/ajaxIndustry",
-		dataType: "json",
+        dataType: "json",
 		async: true,
 		// 允许携带证书
 		xhrFields: {
@@ -32,17 +31,11 @@ $(document).ready(function() {
 		crossDomain: true,
 		success: function(data) {
 			var data = JSON.parse(data);
-			if (data.code == 2) {
-				// alert('请先登录');
-				// window.location.href = "/dome/login.html";
-			} else if (data.code == 1) {
-				alert(data.msg);
-			} else {
+            // console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#industry').append('<li><a href="javascript:;" data-id="' + index + '">' + item + '</a></li>');
-					$('#do-not-say-1').append('<div class="am-panel-bd" data-id="' + index + '">' + item + '</div>')
+					$('#do-not-say-1').append('<div class="am-panel-bd" data-id="' + index + '"><a href="javascript:;" data-id="' + index + '">' + item + '</a></div>')
 				});
-			}
 		},
 		error: function(err) {
 			console.log(err);
@@ -63,18 +56,11 @@ $(document).ready(function() {
 		crossDomain: true,
 		success: function(data) {
 			var data = JSON.parse(data);
-			console.log(data.list);
-			if (data.code == 2) {
-				alert('请先登录');
-				window.location.href = "/login.html";
-			} else if (data.code == 1) {
-				alert(data.msg);
-			} else {
+			// console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#color').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
-					$('#do-not-say-2').append('<div class="am-panel-bd" data-id="' + index + '">' + item + '</div>')
+					$('#do-not-say-2').append('<div class="am-panel-bd" data-id="' + index + '"><a href="javascript:;">' + item + '</a></div>')
 				});
-			}
 		},
 		error: function(err) {
 			console.log(err);
@@ -92,29 +78,29 @@ $(document).ready(function() {
 			scrolllist()
 		}
 	})
-	//请求数据函数
 	function scrolllist() {
-		pages += 1;
 		//baidu.com?&industry=industry&a=color&k=pages;
-		var s = ''; //初始化一个变量
+		var s = '';
 		var url = site + "/index/index/index";
-		//如果行业id 不等于 -1 就把行业id赋值给 s 变量
+		
 		if(industry != -1){
 			//&industry=1
-			s +="&industry="+industry; //拼接url
+			s +="&industry="+industry;
 		}
-		//如果颜色id 不等于 -1 就把颜色id赋值给 s 变量
 		if(color != -1){
 			//&color=2
-			s +="&color="+color;    //拼接url
+			s +="&color="+color;
 		}
-		//如果页码id 不等于 >1 就把页码值赋值给 s 变量
 		
+		pages += 1;
 		if (pages > 1) {
-			s +="&pages"+pages;    //拼接url
+			s +="&page="+pages;
 		}
-		url +='/?'+s;    //最终拼接url
-		console.log(url)
+		
+		url +='/?'+s;
+
+	
+		// console.log(url)
 		// alert(pages)
 
 		$.ajax({
@@ -130,24 +116,18 @@ $(document).ready(function() {
 			crossDomain: true,
 			success: function(data) {
 				//var data = JSON.parse(data);
-				if (data.code == 2) {
-					alert('请先登录');
-					window.location.href = "/dome/login.html";
-				} else if (data.code == 1) {
-					alert(data.msg);
-				} else {
 					// console.log(data.list)
-
 					$.each(data.list, function(index, item) {
 						$('.content ul').append(
 							`
 		                <li data-am-scrollspy="{animation: 'slide-bottom'}">
 						<div class="item-img">
-							<a href="#">
+							<a href="details.html?id=${item.id}" target="_blank">
 								<img src="${site}${item.thumbnail}">
 							</a>
 							<div class="btn">
-								<a href="details.html?id=${item.id}">点击预览</a>
+								<a href="details.html?id=${item.id}" target="_blank">点击预览</a>
+								
 							</div>
 						</div>
 						<div class="item-wrapper">
@@ -158,7 +138,6 @@ $(document).ready(function() {
 		                `
 						);
 					});
-				}
 			},
 			error: function(err) {
 				console.log(err);
