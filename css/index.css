@@ -161,7 +161,12 @@ span {
 	color: #46be8a;
 }
 
-
+#style a{
+	color: #fff;
+}
+#style a:hover{
+	color: #46be8a;
+}
 
 .nav ul li p:hover{
 	transition: all 0.5s;

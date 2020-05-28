@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var site = 'http://h5.0537ys.com';
 	var color = -1;   //颜色
 	var industry = -1;  //行业
+	var style = -1;
 	//要用事件监听
 	//行业选择
 	$('#industry').on('click','li a',function(){
@@ -12,8 +13,18 @@ $(document).ready(function() {
 		pages = 0;
 		scrolllist();
 	})
+	//要用事件监听
+	//颜色选择
 	$('#color').on('click','li',function(){
 		color = $(this).data('id');
+		$('.product').html('');
+		pages = 0;
+		scrolllist();
+	})
+	//要用事件监听
+	//风格选择
+	$('#style').on('click','li',function(){
+		style = $(this).data('id');
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
@@ -30,6 +41,13 @@ $(document).ready(function() {
 	//手机端颜色
 	$('#do-not-say-2').on('click','div a',function(){
 		color = $(this).data('id');
+		$('.product').html('');
+		pages = 0;
+		scrolllist();
+	})
+	//手机端风格
+	$('#do-not-say-3').on('click','div a',function(){
+		style = $(this).data('id');
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
@@ -73,10 +91,34 @@ $(document).ready(function() {
 		crossDomain: true,
 		success: function(data) {
 			var data = JSON.parse(data);
-			// console.log(data.list);
+			console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#color').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
 					$('#do-not-say-2').append('<div class="am-panel-bd phonecolor"><a href="javascript:;"  data-id="' + index + '">' + item + '</a></div>')
+				});
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+	//获取风格
+	$.ajax({
+		type: "post",
+		url: site + "/index/index/ajaxStyle",
+		dataType: "json",
+		async: true,
+		// 允许携带证书
+		xhrFields: {
+			withCredentials: true
+		},
+		// 允许跨域
+		crossDomain: true,
+		success: function(data) {
+			var data = JSON.parse(data);
+			console.log(data.list);
+				$.each(data.list, function(index, item) {
+					$('#style').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
+					$('#do-not-say-3').append('<div class="am-panel-bd phonecolor"><a href="javascript:;"  data-id="' + index + '">' + item + '</a></div>')
 				});
 		},
 		error: function(err) {
@@ -109,6 +151,10 @@ $(document).ready(function() {
 			//&color=2
 			s +="&color="+color;
 		}
+		if(style != -1){
+			//&color=2
+			s +="&style="+style;
+		}
 		
 		pages += 1;
 		if (pages > 1) {
@@ -117,7 +163,7 @@ $(document).ready(function() {
 		
 		url +='/?'+s;
 
-	
+	console.log(url);
 		// console.log(url)
 		// alert(pages)
 
