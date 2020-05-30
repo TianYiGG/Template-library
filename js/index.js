@@ -8,7 +8,6 @@ $(document).ready(function() {
 	//行业选择
 	$('#industry').on('click','li a',function(){
 		industry = $(this).data('id');
-		console.log(industry)
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
@@ -32,8 +31,6 @@ $(document).ready(function() {
 	//手机端行业
 	$('#do-not-say-1').on('click','div a',function(){
 		industry = $(this).data('id');
-		console.log(industry);
-		console.log('hahaha');
 		$('.product').html('');
 		pages = 0;
 		scrolllist();
@@ -91,7 +88,7 @@ $(document).ready(function() {
 		crossDomain: true,
 		success: function(data) {
 			var data = JSON.parse(data);
-			console.log(data.list);
+			//console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#color').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
 					$('#do-not-say-2').append('<div class="am-panel-bd phonecolor"><a href="javascript:;"  data-id="' + index + '">' + item + '</a></div>')
@@ -115,7 +112,7 @@ $(document).ready(function() {
 		crossDomain: true,
 		success: function(data) {
 			var data = JSON.parse(data);
-			console.log(data.list);
+			//console.log(data.list);
 				$.each(data.list, function(index, item) {
 					$('#style').append('<li data-id="' + index + '"><a href="javascript:;">' + item + '</a></li>');
 					$('#do-not-say-3').append('<div class="am-panel-bd phonecolor"><a href="javascript:;"  data-id="' + index + '">' + item + '</a></div>')
@@ -129,7 +126,7 @@ $(document).ready(function() {
 	$(window).scroll(function() {
 		//z总高度
 		var height = $(document).height();
-		console.log(height);
+		//console.log(height);
 		//页面高度
 		var h = $(this).height();
 		//滑动的高度
@@ -163,7 +160,7 @@ $(document).ready(function() {
 		
 		url +='/?'+s;
 
-	console.log(url);
+	// console.log(url);
 		// console.log(url)
 		// alert(pages)
 
